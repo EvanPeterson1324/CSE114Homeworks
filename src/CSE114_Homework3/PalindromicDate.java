@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package CSE114_Homework3;
 
 import java.util.Scanner;
 import java.util.Stack;
 
 /**
- *
- * @author Evanp
+ * @author Evan Peterson 
+ * SBU ID: 108509452 
+ * CSE 114 
+ * Homework #3
  */
 public class PalindromicDate {
 
@@ -27,8 +24,8 @@ public class PalindromicDate {
         checkValidDays();
 
         System.out.print("Enter year: ");
-        checkValidYear();
 
+        checkValidYear();
         printReformedDate();
         printIsPalindrome();
     }
@@ -48,7 +45,8 @@ public class PalindromicDate {
                 }
             }
             if (!isValid) {
-                System.out.print("Incorrect input, please enter a valid month: ");
+                System.out.print("Bad input.");
+                System.exit(0);
             }
         }
     }
@@ -68,10 +66,12 @@ public class PalindromicDate {
                 }
 
                 if (!isValid) {
-                    System.out.print("Incorrect input, please enter a valid day: ");
+                    System.out.print("Bad input.");
+                    System.exit(0);
                 }
-            } catch(Exception e){
-                System.out.print("Incorrect input, please enter a valid day: ");
+            } catch (Exception e) {
+                System.out.print("Bad input.");
+                System.exit(0);
             }
 
         }
@@ -85,13 +85,14 @@ public class PalindromicDate {
             year = input.next();
             try {
                 if (year.length() > 4 || Integer.parseInt(year) < 1) {
-                    System.out.println("Incorrect input, please enter another year: ");
+                    System.exit(0);
                 } else {
                     isValid = true;
                     break;
                 }
             } catch (Exception e) {
-                System.out.println("Bad Input.");
+                System.out.print("Bad input.");
+                System.exit(0);
             }
 
         }
@@ -106,15 +107,14 @@ public class PalindromicDate {
         sb.append(numDays);
         sb.append("/");
 
-        sb.append(year);
+        sb.append(year.substring(2, 4));
 
         reformattedDate = sb.toString();
         System.out.println("Reformatted date: " + reformattedDate);
     }
 
     private static void printIsPalindrome() {
-        boolean isPalendrome = isPalindrome();
-        if (isPalendrome) {
+        if (isPalindrome()) {
             System.out.println("Palindrome? yes");
         } else {
             System.out.println("Palindrome? no");
@@ -123,7 +123,6 @@ public class PalindromicDate {
 
     private static boolean isPalindrome() {
         Stack myStack = new Stack();
-
         for (char ch : reformattedDate.toCharArray()) {
             myStack.push(ch);
         }
@@ -144,7 +143,7 @@ public class PalindromicDate {
      * This enum is to help with handling input from the user. By making this an
      * inner class of sorts, we can make it easier to check if input is correct.
      * Each month has a String denoting its name and a number denoting its
-     * number of days.
+     * number of days, as well as a number denoting what numerical position it holds on the calendar.
      */
     private enum Month {
         JANUARY("january", 30, "01"),
@@ -181,6 +180,5 @@ public class PalindromicDate {
         private String getMonthNum() {
             return monthNum;
         }
-
     }
 }
