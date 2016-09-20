@@ -1,8 +1,5 @@
 package CSE114_Homework2;
 
-
-//package CSE114_HW2;
-
 import java.util.Scanner;
 
 /**
