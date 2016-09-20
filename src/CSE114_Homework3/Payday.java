@@ -40,14 +40,18 @@ public class Payday {
 
     // Managers, who receive a fixed weekly salary;
     private static void managerPrompt() {
-        double weeklySalary, grossPay = 0, taxes = 0, netPay = 0;
+        double weeklySalary, grossPay = 0, taxes = 0, netPay = 0, taxRate = .125;
         
         System.out.print("Enter weekly salary: ");
         weeklySalary = input.nextDouble();
+                
+        grossPay = weeklySalary;
+        taxes = grossPay * taxRate;
+        netPay = grossPay - taxes;
         
-        System.out.println("Gross pay: " + grossPay);
-        System.out.println("Taxes: " + taxes);
-        System.out.println("Net Pay: " + netPay);  
+        System.out.printf("Gross pay: $%,.2f%n", grossPay); 
+        System.out.printf("Taxes: $%,.2f%n", taxes);
+        System.out.printf("Net Pay: $%,.2f%n", netPay);  
     }
 
     /**
@@ -56,29 +60,44 @@ public class Payday {
      * hours worked
      */
     private static void hourlyPrompt() {
-        double hourlyWage = 0, hoursWorked = 0, grossPay = 0, taxes = 0, netPay = 0;
-        
+        double hourlyWage = 0, hoursWorked = 0, grossPay = 0, taxes = 0, netPay = 0, taxRate = .125;
+        double overtimeHours = 0;
         System.out.print("Enter hourly wage: ");
         hourlyWage = input.nextDouble();
         
-        System.out.println("Enter hours worked: ");
+        System.out.print("Enter hours worked: ");
         hoursWorked = input.nextDouble();
         
-        System.out.println("Gross pay: " + grossPay);
-        System.out.println("Taxes: " + taxes);
-        System.out.println("Net Pay: " + netPay);
+        if(hoursWorked > 35){
+            overtimeHours = hoursWorked - 35;
+            grossPay = hourlyWage * 35;
+            grossPay += (hourlyWage * 2) * overtimeHours;
+        } else{
+           grossPay = hourlyWage * hoursWorked;
+        }
+        taxes = grossPay * taxRate;
+        netPay = grossPay - taxes;
+        
+        System.out.printf("Gross pay: $%,.2f%n", grossPay);
+        System.out.printf("Taxes: $%,.2f%n", taxes);
+        System.out.printf("Net Pay: $%,.2f%n", netPay);
     }
 
     // Commission workers, who receive $250 plus 5.7% of their weekly sales;
     private static void commissionPrompt() {
-        double weeklySalary = 0, grossPay = 0, taxes = 0, netPay = 0;
+        double weeklySales = 0, grossPay = 250, taxes = 0, netPay = 0, taxRate = .125;
         
         System.out.print("Enter weekly sales: ");
-        weeklySalary = input.nextDouble();
+        weeklySales = input.nextDouble();
         
-        System.out.println("Gross pay: " + grossPay);
-        System.out.println("Taxes: " + taxes);
-        System.out.println("Net Pay: " + netPay);
+        double commission = weeklySales * .057;
+        grossPay += commission;
+        taxes = grossPay * taxRate;
+        netPay = grossPay - taxes;
+        
+        System.out.printf("Gross pay: $%,.2f%n", grossPay);
+        System.out.printf("Taxes: $%,.2f%n", taxes);
+        System.out.printf("Net Pay: $%,.2f%n", netPay);
     }
 
     /**
@@ -86,7 +105,7 @@ public class Payday {
      * produce (each pieceworker works on only one type of item)
      */
     private static void pieceworkerPrompt() {
-        double piecesProduced = 0, payPerPiece = 0, grossPay = 0, taxes = 0, netPay = 0;
+        double piecesProduced = 0, payPerPiece = 0, grossPay = 0, taxes = 0, netPay = 0, taxRate = .125;
         
         System.out.print("Enter pieces produced: ");
         piecesProduced = input.nextDouble();
@@ -94,8 +113,12 @@ public class Payday {
         System.out.print("Enter pay per piece: ");
         payPerPiece = input.nextDouble();
         
-        System.out.println("Gross pay: " + grossPay);
-        System.out.println("Taxes: " + taxes);
-        System.out.println("Net Pay: " + netPay);
+        grossPay = payPerPiece * piecesProduced;
+        taxes = grossPay * taxRate;
+        netPay = grossPay - taxes;
+        
+        System.out.printf("Gross pay: $%,.2f%n", grossPay);
+        System.out.printf("Taxes: $%,.2f%n", taxes);
+        System.out.printf("Net Pay: $%,.2f%n", netPay);
     }
 }

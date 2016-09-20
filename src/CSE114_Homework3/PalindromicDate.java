@@ -18,13 +18,16 @@ public class PalindromicDate {
     public static void main(String[] args) {
         input = new Scanner(System.in);
         System.out.print("Enter month: ");
-        checkMonthValid();
+        month = input.next();
 
         System.out.print("Enter day: ");
-        checkValidDays();
+        numDays = input.nextInt();
 
         System.out.print("Enter year: ");
-
+        year = input.next();
+        
+        checkMonthValid();
+        checkValidDays();
         checkValidYear();
         printReformedDate();
         printIsPalindrome();
@@ -37,7 +40,7 @@ public class PalindromicDate {
     private static void checkMonthValid() {
         boolean isValid = false;
         while (!isValid) {
-            month = input.next();
+            //month = input.next();
             for (Month m : Month.values()) {
                 if (month.equalsIgnoreCase(m.getName())) {
                     isValid = true;
@@ -57,10 +60,15 @@ public class PalindromicDate {
 
         while (!isValid) {
             try {
-                numDays = input.nextInt();
+                //numDays = input.nextInt();
 
                 // Checks if the value of the days is less or equal to the correct number.
-                if (numDays <= days && numDays > 0) {
+                if(isLeapYear() && month.equals(Month.FEBRUARY.getName())){
+                    if (numDays + 1 <= days) {
+                        isValid = true;
+                        break;
+                    }
+                } else if (numDays <= days && numDays > 0) {
                     isValid = true;
                     break;
                 }
@@ -77,12 +85,17 @@ public class PalindromicDate {
         }
 
     }
+    
+    private static boolean isLeapYear(){
+        int i = Integer.parseInt(year) % 4;
+        return  i == 0;
+    }
 
     private static void checkValidYear() {
         boolean isValid = false;
 
         while (!isValid) {
-            year = input.next();
+            //year = input.next();
             try {
                 if (year.length() > 4 || Integer.parseInt(year) < 1) {
                     System.exit(0);
@@ -147,7 +160,7 @@ public class PalindromicDate {
      */
     private enum Month {
         JANUARY("january", 30, "01"),
-        FEBRUARY("february", 29, "02"),
+        FEBRUARY("february", 28, "02"),
         MARCH("march", 31, "03"),
         APRIL("april", 30, "04"),
         MAY("may", 31, "05"),
