@@ -32,43 +32,41 @@ public class StonyBrookResort {
         System.out.print("Enter day of the week that vacation starts: ");
         startDay = input.next().toLowerCase();
         
-        System.out.println("Total before discounts: " + calculateSubtotal());
-        
+        calculateSubtotal();
     }
     
     /**
      * This method will calculate the sub-total of the vacation cost based on the user input.
      * We need to hold the values for the discounts, the subtotal before the discounts and charges, the charges, and the grand total
      */
-    private static double calculateSubtotal(){
-         double discountedDays,unDiscountedDays, adultCost, childCost, totalPrice;
-         childCost = CHILD_PRICE * numChildren;
-         childCost *= numChildren;
+    private static void calculateSubtotal(){
+         double discountedDays,unDiscountedDays, adultCost, childCost, totalPrice, totalBeforeDiscount, discounts = 0, surcharge = 0;
          
-        // Case 1
-        if(vacLength > 5){
-            discountedDays = vacLength - 5;  // Holds the amount of discounted days
-            adultCost = (ADULT_PRICE * 5) ;
-            adultCost += (ADULT_DISC_PRICE * discountedDays);
-            adultCost *= numAdults;
-            
-        } else{ // Case 2
-            adultCost = (ADULT_PRICE * vacLength);
-            adultCost *= numAdults;
-        }
-        
-        // Case 3
-        if(startDay.equals("monday") && vacLength < 4){
-            adultCost -= 150.00;
-        }
-        
-        numGuests = numChildren + numAdults;
-        
-        totalPrice = adultCost + childCost;
-        if(numGuests > 5){
-            totalPrice *= 1.05;
-        } 
-        
-        return totalPrice;
+         adultCost = numAdults * ADULT_PRICE;
+         childCost = numChildren * CHILD_PRICE;
+         totalBeforeDiscount = (adultCost * vacLength) + (childCost * vacLength);
+         System.out.println("Total before discounts: " + totalBeforeDiscount);
+         
+         if(startDay.equalsIgnoreCase("monday") && vacLength < 5){
+             discounts += 150;
+         }
+         
+         if(vacLength > 5){
+             discountedDays = vacLength - 5;
+             unDiscountedDays = 5;
+             discounts += (((ADULT_PRICE * .25) * numAdults) * discountedDays);
+         }
+         
+         System.out.println("Discounts: $" + discounts);
+         
+         if(numChildren + numAdults > 5){
+             surcharge = (totalBeforeDiscount * .05);
+         }
+         
+         System.out.println("Surcharge: $" + surcharge);
+         
+         double total = (surcharge - discounts) + totalBeforeDiscount;
+         
+         System.out.println("Grand total: $" + total);
     }
 }
