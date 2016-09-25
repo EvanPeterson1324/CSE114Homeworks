@@ -6,8 +6,10 @@
 package CSE114_Homework4;
 
 /**
- *
- * @author Evanp
+ * @author Evan Peterson
+ * SBU ID: 108509452
+ * CSE 114
+ * Homework #4
  */
 public class RunLengthEncoding {
     

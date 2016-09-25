@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package CSE114_Homework4;
 
 import java.util.ArrayList;
@@ -10,8 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
- * @author Evanp
+ * @author Evan Peterson
+ * SBU ID: 108509452
+ * CSE 114
+ * Homework #4
  */
 public class PrimeFactorization {
     private static Scanner input;
