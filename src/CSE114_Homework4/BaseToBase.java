@@ -1,5 +1,6 @@
 package CSE114_Homework4;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -12,7 +13,7 @@ public class BaseToBase {
     private static Scanner input;
     private static int startingBase, endingBase;
     private static String inputStr;
-    private static char[] convertArray = "123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+    private static char[] convertArray = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
     
     public static void main(String[] args){
         int base10Num;
@@ -65,8 +66,18 @@ public class BaseToBase {
                 break;
         }
         
-        
-        return " ";
+       StringBuilder sb = new StringBuilder();
+       int rem ,index = 0;
+       while(decNum != 0){
+           rem = decNum % endingBase;
+           decNum /= endingBase;
+           sb.append(getValue(rem));
+       }
+       
+       
+       
+       
+        return sb.reverse().toString();
     }
     
     /**
@@ -78,27 +89,21 @@ public class BaseToBase {
         int value = 0;
         for(char c : convertArray){
             if(c == ch){
-                return value + 1;
+                return value;
             }
             value++;
         }
-        return value + 1;
+        return value;
     }
-}
 
+    private static char getValue(int n) {
+        for(int i = 0; i < convertArray.length; i++){
+            if(n == i){
+                return convertArray[i];
+            }
+        }
+        return ' ';
+    }
+}   
+    
 
-
-
-
-/*
-Write a program that takes a positive integer expressed in one base and converts it to another. Specifically, prompt
-the user to enter in the following order: (i) the input number, (ii) the base of the input number (“starting base”),
-and (iii) the base that the input number will be converted into (“ending base”). You may assume that the input is
-a valid integer written in the starting base. Your program must be able to handle starting and ending bases in the
-range 2 through 36, inclusive.
-Appendix F of the course textbook describes in detail how to convert to and from base 10. Generalize the algorithms
-given there. You will find it easiest to write a program that converts the input number into decimal, and
-then from decimal into the ending base. Note that for bases greater than 10 we use the letters ‘A’ through ’Z’ as
-digits for representing the decimal values 10 through 35. Your program should assume that the user will enter any
-input letters in uppercase only.
-*/

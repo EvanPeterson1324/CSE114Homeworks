@@ -49,7 +49,7 @@ public class PrimeFactorization {
     }
 
     private static void computeAndDisplayPrimeFac(int product) {
-        int exp;
+       int exp;
        // The first prime number is 2 so we loop from 2 until the product
        for(int i = 2; i <= product; i++){
            exp = 0;
@@ -69,6 +69,4 @@ public class PrimeFactorization {
        }
         System.out.println();
     }
-    
- 
 }
