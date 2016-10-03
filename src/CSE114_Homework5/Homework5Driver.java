@@ -22,11 +22,22 @@ public class Homework5Driver {
                 // PART ONE
 		System.out.println("Part 1:"); 
 		String result;
+                
 		result = Homework5Methods.eliminateDuplicates("abracadabra");
+                System.out.println(result);
+                
 		result = Homework5Methods.eliminateDuplicates("What's a Seawolf? I'm a Seawolf!");
-		result = Homework5Methods.eliminateDuplicates("Stony Brook University");
-		result = Homework5Methods.eliminateDuplicates("AaBbCcDd");
-		result = Homework5Methods.eliminateDuplicates("");
+                System.out.println(result);
+		
+                result = Homework5Methods.eliminateDuplicates("Stony Brook University");
+                System.out.println(result);
+		
+                result = Homework5Methods.eliminateDuplicates("AaBbCcDd");
+                System.out.println(result);
+		
+                result = Homework5Methods.eliminateDuplicates("");
+                System.out.println(result);
+                
 		
                 // PART TWO
 		System.out.println("Part 2:");

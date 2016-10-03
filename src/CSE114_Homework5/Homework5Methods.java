@@ -1,5 +1,8 @@
 package CSE114_Homework5;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+
 /**
  *
  * @author evanpeterson
@@ -7,8 +10,17 @@ package CSE114_Homework5;
 public class Homework5Methods {
 	// part 1
 	public static String eliminateDuplicates(String str) {
-		// fill this in
-		return "";
+                // LinkedHashSet maintains the order while not allowing for duplicates.
+                // This is different then a HashSet because the HashSet doesnt maintain order. (This makes it faster)
+                LinkedHashSet<Character> charSet = new LinkedHashSet<>();
+                StringBuilder sb = new StringBuilder();
+		for(char ch : str.toCharArray()){
+                    charSet.add(ch);
+                }
+                for(char ch : charSet){
+                    sb.append(ch);
+                }
+		return sb.toString();
 	}
 
 	// part 2
