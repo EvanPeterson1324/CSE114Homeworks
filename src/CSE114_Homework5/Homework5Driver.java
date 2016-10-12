@@ -62,6 +62,7 @@ public class Homework5Driver {
 		base = Homework5Methods.lowestBasePalindrome(917);
 		base = Homework5Methods.lowestBasePalindrome(977);
 		base = Homework5Methods.lowestBasePalindrome(271928172);
+                System.out.println();
 		
                 // PART FOUR
 		System.out.println("Part 4:");
@@ -81,7 +82,8 @@ public class Homework5Driver {
                 
 		nums = Homework5Methods.interleaveArrays(new int[]{1,2},new int[]{2,3,4,5},4,-3);
                 printArray(nums);
-		
+		System.out.println();
+                
                 // PART FIVE
 		System.out.println("Part 5:");
                 

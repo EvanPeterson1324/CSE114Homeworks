@@ -177,12 +177,14 @@ public class Homework5Methods {
     public static void rotateRight(int[][] matrix, int numCols) {
         if(numCols > 0){
             for(int i = 0; i < matrix.length; i++){
-                rotateRight1DArray(matrix[i], numCols);
+                for(int j = 0; j < numCols; j++){
+                     rotateRight1DArray(matrix[i]);
+                }
             } 
         }  
     }
 
-    private static void rotateRight1DArray(int[] a, int numShifts){
+    private static void rotateRight1DArray(int[] a){
         int temp = a[a.length - 1];
         for (int i = a.length - 2; i >= 0; i--) {
             a[i + 1] = a[i]; 
