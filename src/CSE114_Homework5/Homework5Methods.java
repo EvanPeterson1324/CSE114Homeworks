@@ -97,7 +97,6 @@ public class Homework5Methods {
             
             // Take stride number of elements from array 1
             for(int i = 0; i < stride; i++){
-                
                 // If we reach the max elements then we just return the interleaved array
                 if(interStack.size() == maxElements){
                    return popFromStackAndMakeArray(interStack);  
@@ -129,8 +128,6 @@ public class Homework5Methods {
                 }
             }
         }
-        
-        
         return null;
     }
     
@@ -173,17 +170,25 @@ public class Homework5Methods {
             array3[i] = (int) interStack.pop();
             i--;
         }
-            
-        
-        
         return array3;
     }
 
     // Part 5
     public static void rotateRight(int[][] matrix, int numCols) {
-        
+        if(numCols > 0){
+            for(int i = 0; i < matrix.length; i++){
+                rotateRight1DArray(matrix[i], numCols);
+            } 
+        }  
     }
 
-    
+    private static void rotateRight1DArray(int[] a, int numShifts){
+        int temp = a[a.length - 1];
+        for (int i = a.length - 2; i >= 0; i--) {
+            a[i + 1] = a[i]; 
+        }
+        a[0] = temp;
+        
+    }
     
 }

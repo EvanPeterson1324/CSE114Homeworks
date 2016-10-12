@@ -84,12 +84,18 @@ public class Homework5Driver {
 		
                 // PART FIVE
 		System.out.println("Part 5:");
+                
 		int[][] nums2D = new int[][]{ {1,2,3}, {-1,-2,-3,-4,-5}, {6,7,8,9}, {10, 11} };
 		Homework5Methods.rotateRight(nums2D, 2);
+                print2DArray(nums2D);
+                
 		nums2D = new int[][]{ {1,2,3}, {-1,-2,-3,-4,-5}, {6,7,8,9}, {10, 11} };
 		Homework5Methods.rotateRight(nums2D, 7);
+                print2DArray(nums2D);
+                
 		nums2D = new int[][]{ {1,2,3}, {-1,-2,-3,-4,-5}, {6,7,8,9}, {10, 11} };
 		Homework5Methods.rotateRight(nums2D, -1);
+                print2DArray(nums2D);
 	}
         
         private static void printArray(int[] a){
@@ -101,5 +107,16 @@ public class Homework5Driver {
             } else {
                 System.out.println("The array is null.");
             }
+        }
+        
+        private static void print2DArray(int[][] a){
+            for(int[] b : a){
+                for(int x : b){
+                    System.out.print(x + " ");
+                }
+                System.out.println();
+            }
+            
+            System.out.println("");
         }
 }
