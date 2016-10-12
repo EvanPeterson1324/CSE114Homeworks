@@ -1,4 +1,4 @@
-package CSE114_Homework3;
+//package CSE114_Homework3;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -48,7 +48,7 @@ public class PalindromicDate {
                 }
             }
             if (!isValid) {
-                System.out.print("Bad input.");
+                System.out.println("Bad input.");
                 System.exit(0);
             }
         }
@@ -60,11 +60,9 @@ public class PalindromicDate {
 
         while (!isValid) {
             try {
-                //numDays = input.nextInt();
-
                 // Checks if the value of the days is less or equal to the correct number.
                 if(isLeapYear() && month.equals(Month.FEBRUARY.getName())){
-                    if (numDays + 1 <= days) {
+                    if (numDays <= days + 1 && numDays > 0) {
                         isValid = true;
                         break;
                     }
@@ -74,11 +72,11 @@ public class PalindromicDate {
                 }
 
                 if (!isValid) {
-                    System.out.print("Bad input.");
+                    System.out.println("Bad input.");
                     System.exit(0);
                 }
             } catch (Exception e) {
-                System.out.print("Bad input.");
+                System.out.println("Bad input.");
                 System.exit(0);
             }
 
@@ -88,7 +86,9 @@ public class PalindromicDate {
     
     private static boolean isLeapYear(){
         int i = Integer.parseInt(year) % 4;
-        return  i == 0;
+        int j = Integer.parseInt(year) % 100;
+        int k = Integer.parseInt(year) % 400;
+        return  (i == 0) && (j != 0 || k == 0);
     }
 
     private static void checkValidYear() {
@@ -104,7 +104,7 @@ public class PalindromicDate {
                     break;
                 }
             } catch (Exception e) {
-                System.out.print("Bad input.");
+                System.out.println("Bad input.");
                 System.exit(0);
             }
 

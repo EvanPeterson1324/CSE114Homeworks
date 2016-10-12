@@ -1,5 +1,5 @@
 
-package CSE114_Homework3;
+//package CSE114_Homework3;
 
 import java.util.Scanner;
 
@@ -49,9 +49,9 @@ public class Payday {
         taxes = grossPay * taxRate;
         netPay = grossPay - taxes;
         
-        System.out.printf("Gross pay: $%,.2f%n", grossPay); 
-        System.out.printf("Taxes: $%,.2f%n", taxes);
-        System.out.printf("Net Pay: $%,.2f%n", netPay);  
+        System.out.printf("Gross pay: $%.2f%n", grossPay); 
+        System.out.printf("Taxes: $%.2f%n", taxes);
+        System.out.printf("Net Pay: $%.2f%n", netPay);  
     }
 
     /**
@@ -78,9 +78,9 @@ public class Payday {
         taxes = grossPay * taxRate;
         netPay = grossPay - taxes;
         
-        System.out.printf("Gross pay: $%,.2f%n", grossPay);
-        System.out.printf("Taxes: $%,.2f%n", taxes);
-        System.out.printf("Net Pay: $%,.2f%n", netPay);
+        System.out.printf("Gross pay: $%.2f%n", grossPay);
+        System.out.printf("Taxes: $%.2f%n", taxes);
+        System.out.printf("Net Pay: $%.2f%n", netPay);
     }
 
     // Commission workers, who receive $250 plus 5.7% of their weekly sales;
@@ -95,9 +95,9 @@ public class Payday {
         taxes = grossPay * taxRate;
         netPay = grossPay - taxes;
         
-        System.out.printf("Gross pay: $%,.2f%n", grossPay);
-        System.out.printf("Taxes: $%,.2f%n", taxes);
-        System.out.printf("Net Pay: $%,.2f%n", netPay);
+        System.out.printf("Gross pay: $%.2f%n", grossPay);
+        System.out.printf("Taxes: $%.2f%n", taxes);
+        System.out.printf("Net Pay: $%.2f%n", netPay);
     }
 
     /**
@@ -117,8 +117,8 @@ public class Payday {
         taxes = grossPay * taxRate;
         netPay = grossPay - taxes;
         
-        System.out.printf("Gross pay: $%,.2f%n", grossPay);
-        System.out.printf("Taxes: $%,.2f%n", taxes);
-        System.out.printf("Net Pay: $%,.2f%n", netPay);
+        System.out.printf("Gross pay: $%.2f%n", grossPay);
+        System.out.printf("Taxes: $%.2f%n", taxes);
+        System.out.printf("Net Pay: $%.2f%n", netPay);
     }
 }

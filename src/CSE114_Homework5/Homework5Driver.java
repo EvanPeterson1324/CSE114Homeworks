@@ -42,10 +42,19 @@ public class Homework5Driver {
                 // PART TWO
 		System.out.println("Part 2:");
 		result = Homework5Methods.getDigits("1-800-Flowers");
+                System.out.println(result);
+                
 		result = Homework5Methods.getDigits("1800FLOWERS");
+                System.out.println(result);
+                
 		result = Homework5Methods.getDigits("1-CSE-114-JAVA");
+                System.out.println(result);
+                
 		result = Homework5Methods.getDigits("Seawolf-SBU-1");
+                System.out.println(result);
 		
+                System.out.println();
+                
                 // PART THREE
 		System.out.println("Part 3:");
 		int base;
@@ -57,11 +66,21 @@ public class Homework5Driver {
                 // PART FOUR
 		System.out.println("Part 4:");
 		int[] nums;
+                
 		nums = Homework5Methods.interleaveArrays(new int[]{2,2,5,4},new int[]{6,2,1,8,4,4},2,10);
+                printArray(nums);
+                
 		nums = Homework5Methods.interleaveArrays(new int[]{10,9,8},new int[]{1,2,3},5,20);
+                printArray(nums);
+                
 		nums = Homework5Methods.interleaveArrays(new int[]{2,5,1,4}, new int[]{10,5,2},1,8);
+                printArray(nums);
+                
 		nums = Homework5Methods.interleaveArrays(new int[]{2,4,6,8},new int[]{9,7,5,3,1},0,6);
+                printArray(nums);
+                
 		nums = Homework5Methods.interleaveArrays(new int[]{1,2},new int[]{2,3,4,5},4,-3);
+                printArray(nums);
 		
                 // PART FIVE
 		System.out.println("Part 5:");
@@ -72,4 +91,15 @@ public class Homework5Driver {
 		nums2D = new int[][]{ {1,2,3}, {-1,-2,-3,-4,-5}, {6,7,8,9}, {10, 11} };
 		Homework5Methods.rotateRight(nums2D, -1);
 	}
+        
+        private static void printArray(int[] a){
+            if(a != null){
+                for(int x : a){
+                    System.out.print(x + " ");
+                }
+                System.out.println();
+            } else {
+                System.out.println("The array is null.");
+            }
+        }
 }

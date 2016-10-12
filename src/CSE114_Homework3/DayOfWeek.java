@@ -1,5 +1,5 @@
 
-package CSE114_Homework3;
+//package CSE114_Homework3;
 
 import java.util.Scanner;
 
@@ -39,14 +39,16 @@ public class DayOfWeek {
         
         if(Integer.parseInt(month) == Integer.parseInt(Month.JANUARY.getMonthNum())){
             m = 13;
+            k -= 1;
         } else if(Integer.parseInt(month) == Integer.parseInt(Month.FEBRUARY.getMonthNum())){
             m = 14;
+            k -= 1;
         }
         
-        int numDay = (q + ( (13 * (m + 1)) / 5) + k + (k / 4) + (j / 4) + (5 * j) ) % 7;
+        int numDay = (q + ((13 * (m + 1)) / (5)) + k + (k / 4) + (j / 4) + (5 * j)) % 7;
         String[] daysOfWeek = {"Saturday" , "Sunday" , "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
         
-        return daysOfWeek[numDay - 1];
+        return daysOfWeek[numDay];
     }
     
     /**

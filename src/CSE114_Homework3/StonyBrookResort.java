@@ -1,5 +1,5 @@
 
-package CSE114_Homework3;
+//package CSE114_Homework3;
 
 import java.util.Scanner;
 
@@ -45,7 +45,7 @@ public class StonyBrookResort {
          adultCost = numAdults * ADULT_PRICE;
          childCost = numChildren * CHILD_PRICE;
          totalBeforeDiscount = (adultCost * vacLength) + (childCost * vacLength);
-         System.out.println("Total before discounts: " + totalBeforeDiscount);
+         System.out.printf("Total before discounts: $%.2f%n" ,totalBeforeDiscount);
          
          if(startDay.equalsIgnoreCase("monday") && vacLength < 5){
              discounts += 150;
@@ -57,16 +57,16 @@ public class StonyBrookResort {
              discounts += (((ADULT_PRICE * .25) * numAdults) * discountedDays);
          }
          
-         System.out.println("Discounts: $" + discounts);
+         System.out.printf("Discounts: $%.2f%n", discounts);
          
          if(numChildren + numAdults > 5){
              surcharge = (totalBeforeDiscount * .05);
          }
          
-         System.out.println("Surcharge: $" + surcharge);
+         System.out.printf("Surcharge: $%.2f%n", surcharge);
          
          double total = (surcharge - discounts) + totalBeforeDiscount;
          
-         System.out.println("Grand total: $" + total);
+         System.out.printf("Grand total: $%.2f%n", total);
     }
 }

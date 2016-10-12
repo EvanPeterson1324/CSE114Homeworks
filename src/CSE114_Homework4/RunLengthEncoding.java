@@ -81,6 +81,11 @@ public class RunLengthEncoding {
                 while(!encodeStack.isEmpty()){
                     sb.append(encodeStack.pop());
                 } 
+            } else{
+                if(!encodeStack.isEmpty()){
+                    sb.append(flagStr).append(encodeStack.peek()).append(encodeStack.size());
+                    encodeStack.clear();
+                }
             }
         return sb.toString();
     }
