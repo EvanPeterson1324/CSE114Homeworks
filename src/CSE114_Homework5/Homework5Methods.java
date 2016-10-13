@@ -1,4 +1,4 @@
-package CSE114_Homework5;
+//package CSE114_Homework5;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -6,8 +6,10 @@ import java.util.LinkedHashSet;
 import java.util.Stack;
 
 /**
- *
- * @author evanpeterson
+ * @author Evan Peterson
+ * SBU ID: 108509452
+ * CSE 114
+ * Homework #5
  */
 public class Homework5Methods {
     // part 1
