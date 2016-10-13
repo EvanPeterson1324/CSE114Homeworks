@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package CSE114_Homework5;
+
+//package CSE114_Homework5;
 
 /**
  * @author Evan Peterson
@@ -58,10 +54,19 @@ public class Homework5Driver {
                 // PART THREE
 		System.out.println("Part 3:");
 		int base;
-		base = Homework5Methods.lowestBasePalindrome(100);
+		
+                base = Homework5Methods.lowestBasePalindrome(100);
+                System.out.println(base);
+                
 		base = Homework5Methods.lowestBasePalindrome(917);
+                System.out.println(base);
+                
 		base = Homework5Methods.lowestBasePalindrome(977);
+                System.out.println(base);
+                
 		base = Homework5Methods.lowestBasePalindrome(271928172);
+                System.out.println(base);
+                
                 System.out.println();
 		
                 // PART FOUR
