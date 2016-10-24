@@ -9,7 +9,11 @@ package CSE114_Homework6;
  */
 
 public class CarRepairShop {	
-
+    JankyArrayList carShopDatabase = new JankyArrayList();
+    
+    
+    
+    
 	public int addNewCar(String vin, String make, int year) {
 		return -8;
 	}
