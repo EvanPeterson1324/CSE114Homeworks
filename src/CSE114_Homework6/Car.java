@@ -65,5 +65,10 @@ public class Car {
         }
         repairTickets = doubledArray;
     }
+
+    public void deleteAllRepairs() {
+        repairTickets = new RepairTicket[1];
+        repairTicketsSize = 0;
+    }
     
 }
