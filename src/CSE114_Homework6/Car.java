@@ -12,11 +12,14 @@ public class Car {
     private String make;
     private int year;
     private RepairTicket repairTickets[];
+    private int repairTicketsSize;
     
     public Car(String vin, String make, int year){
         this.vin = vin;
         this.make = make;
         this.year = year;
+        repairTickets = new RepairTicket[1];
+        repairTicketsSize = 0;
     }
 
     public String getVin() {
@@ -34,11 +37,33 @@ public class Car {
     public RepairTicket[] getRepairTickets() {
         return repairTickets;
     }
-
+    
+    /** 
+     * Adds a ticket for this car instance.
+     * @param repairTicket 
+     */
     public void addRepairTicket(RepairTicket repairTicket) {
         // Code for the expanding array
+        if (repairTicketsSize == repairTickets.length) {
+            doubleTheArraySize();
+        }
+        
+        // Add the ticket to the tickets
+        repairTickets[repairTicketsSize] = repairTicket;
+        repairTicketsSize++;
     }
     
-    
+    /**
+     * Doubles the size of an array by creating a new one, adding the elements
+     * from the old one, and then setting the reference of the old one to the
+     * new one.
+     */
+    private void doubleTheArraySize() {
+        RepairTicket[] doubledArray = new RepairTicket[(repairTickets.length) * 2];
+        for (int i = 0; i < repairTickets.length; i++) {
+            doubledArray[i] = repairTickets[i];
+        }
+        repairTickets = doubledArray;
+    }
     
 }
