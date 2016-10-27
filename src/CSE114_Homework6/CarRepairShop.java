@@ -9,11 +9,14 @@ package CSE114_Homework6;
 public class CarRepairShop {
 
     private Car[] carRepairShopDatabase;
+    private CarMake[] carMakes;
     private int databaseSize;
-
+    private int carMakesSize;
     public CarRepairShop() {
         carRepairShopDatabase = new Car[1];
+        carMakes = new CarMake[1];
         databaseSize = 0;
+        carMakesSize = 0;
     }
     
     /**
@@ -35,13 +38,31 @@ public class CarRepairShop {
             doubleTheArraySize();
         }
         
+        // If its a new make we will add it to the list of makes
+        if(isNewMake(make)){
+            if(carMakesSize == carMakes.length){
+                doubleCarMakeArraySize();
+            }
+            carMakes[carMakesSize] = new CarMake(make, 0);
+            carMakesSize++;
+        } 
+        
+        
         // Add the car to the database then increment the size
         carRepairShopDatabase[databaseSize] = car;
         databaseSize++;
 
         return databaseSize;
     }
-
+    
+    private boolean isNewMake(String make){
+        for(int i = 0; i < carMakes.length; i++){
+            if(carMakes[i] != null && carMakes[i].getName().equalsIgnoreCase(make)){
+                return false;
+            }
+        }
+        return true;
+    }
     /**
      * Returns true if the vin number does not exist in the database.
      *
@@ -68,6 +89,19 @@ public class CarRepairShop {
             doubledArray[i] = carRepairShopDatabase[i];
         }
         carRepairShopDatabase = doubledArray;
+    }
+    
+    /**
+     * Doubles the size of an array by creating a new one, adding the elements
+     * from the old one, and then setting the reference of the old one to the
+     * new one.
+     */
+    private void doubleCarMakeArraySize() {
+        CarMake[] doubledArray = new CarMake[(carMakes.length) * 2];
+        for (int i = 0; i < carMakes.length; i++) {
+            doubledArray[i] = carMakes[i];
+        }
+        carMakes = doubledArray;
     }
     
     /**
@@ -146,19 +180,35 @@ public class CarRepairShop {
      * @return 
      */
     public String getWorstCarMake() {
-        // If there are no cars in the database, return null.
-        if(carRepairShopDatabase[0] == null){
-            return null;
-        }
-        
-        Car bigBoy = carRepairShopDatabase[0];
-        
-        for(Car car : carRepairShopDatabase){
-            if(bigBoy.getRepairTickets().length < car.getRepairTickets().length){ // Need to add a counter to fix this bug
-                bigBoy = car;
+        for(int i = 0; i < carRepairShopDatabase.length; i++){
+            for(int j = 0; j < carMakes.length; j++){
+                if(carRepairShopDatabase[i] != null && carMakes[j] != null 
+                        && carRepairShopDatabase[i].getMake().equalsIgnoreCase(carMakes[j].getName())){
+                    carMakes[j].addRepairs(carRepairShopDatabase[i].getNumTickets());
+                }
             }
         }
-        return bigBoy.getMake();
+        
+        CarMake bigBoy = carMakes[0];
+        if(bigBoy != null){
+            for(int i = 0; i < carMakes.length; i++){
+                if(carMakes[i] != null && bigBoy.getNumRepairs() < carMakes[i].getNumRepairs()){
+                    bigBoy = carMakes[i];
+                }
+            }
+            clearOutRepairs();
+            return bigBoy.getName();
+        }
+        clearOutRepairs();
+        return null;
+    }
+    
+    private void clearOutRepairs(){
+        for(int i = 0; i < carMakes.length; i++){
+            if(carMakes[i] != null){
+                carMakes[i].resetRepairs();
+            }
+        }
     }
     
     /**
@@ -184,6 +234,7 @@ public class CarRepairShop {
                     if(tempTickets[i] != null && tempTickets[i].getTicketNum() == ticketNum){
                         tempTickets[i] = null;
                         shiftTicketsLeftFromIndex(i, tempTickets);
+                        car.decreaseNumTickets();
                         return true;
                     }
                 }
@@ -252,6 +303,7 @@ public class CarRepairShop {
     private void shiftCarsLeftFromIndex(int index){
         for(int i = index; i < carRepairShopDatabase.length - 1; i++){
             carRepairShopDatabase[i] = carRepairShopDatabase[i+1];
+            carRepairShopDatabase[i+1] = null;
         }
     }
     

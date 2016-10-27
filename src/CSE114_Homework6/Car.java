@@ -38,6 +38,10 @@ public class Car {
         return repairTickets;
     }
     
+    public int getNumTickets(){
+        return repairTicketsSize;
+    }
+    
     /** 
      * Adds a ticket for this car instance.
      * @param repairTicket 
