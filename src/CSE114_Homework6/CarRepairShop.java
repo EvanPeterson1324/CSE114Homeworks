@@ -97,7 +97,7 @@ public class CarRepairShop {
      */
     private Car searchForCarByVin(String vin){
         for(Car car : carRepairShopDatabase){
-            if(car.getVin().equalsIgnoreCase(vin)){
+            if(car != null && car.getVin().equalsIgnoreCase(vin)){
                 return car;
             }
         }
@@ -125,10 +125,15 @@ public class CarRepairShop {
      */
     public double getTotalRepairCosts(String vin) {
         Car car = searchForCarByVin(vin);
+        
         double totalCost = 0;
-        if(car != null){
-            for(RepairTicket ticket : car.getRepairTickets()){
-                totalCost += ticket.getCost();
+        if((car != null)){
+            if((car.getRepairTickets()[0] != null)){
+                for(RepairTicket ticket : car.getRepairTickets()){
+                    if(ticket != null){
+                        totalCost += ticket.getCost();
+                    }
+                }
             }
             return totalCost;
         }
@@ -149,7 +154,7 @@ public class CarRepairShop {
         Car bigBoy = carRepairShopDatabase[0];
         
         for(Car car : carRepairShopDatabase){
-            if(bigBoy.getRepairTickets().length < car.getRepairTickets().length){
+            if(bigBoy.getRepairTickets().length < car.getRepairTickets().length){ // Need to add a counter to fix this bug
                 bigBoy = car;
             }
         }
@@ -173,12 +178,14 @@ public class CarRepairShop {
     
     public boolean deleteRepair(int ticketNum) {
         for(Car car: carRepairShopDatabase){
-            RepairTicket[] tempTickets = car.getRepairTickets();
-            for(int i = 0; i < tempTickets.length; i++){
-                if(tempTickets[i].getTicketNum() == ticketNum){
-                    tempTickets[i] = null;
-                    shiftTicketsLeftFromIndex(i, tempTickets);
-                    return true;
+            if(car != null){
+                RepairTicket[] tempTickets = car.getRepairTickets();
+                for(int i = 0; i < tempTickets.length; i++){
+                    if(tempTickets[i] != null && tempTickets[i].getTicketNum() == ticketNum){
+                        tempTickets[i] = null;
+                        shiftTicketsLeftFromIndex(i, tempTickets);
+                        return true;
+                    }
                 }
             }
         }
@@ -200,6 +207,7 @@ public class CarRepairShop {
             int index = getIndexInDatabase(VIN);
             carRepairShopDatabase[index] = null;
             shiftCarsLeftFromIndex(index);
+            databaseSize--;
             return true;
         }
         return false;
@@ -212,13 +220,14 @@ public class CarRepairShop {
      */
     private RepairTicket findTicketNumber(int ticketNum){
         for(Car car: carRepairShopDatabase){
-            for(RepairTicket ticket : car.getRepairTickets()){
-                if(ticket.getTicketNum() == ticketNum){
-                    return ticket;
+            if(car != null){
+                for(RepairTicket ticket : car.getRepairTickets()){
+                    if((ticket != null) && (ticket.getTicketNum() == ticketNum)){
+                        return ticket;
+                    }
                 }
             }
         }
-        
         return null;
     }
     
@@ -249,6 +258,7 @@ public class CarRepairShop {
     private void shiftTicketsLeftFromIndex(int index, RepairTicket[] tickets){
         for(int i = index; i < tickets.length - 1; i++){
             tickets[i] = tickets[i+1];
+            tickets[i+1] = null;
         }
     }
 

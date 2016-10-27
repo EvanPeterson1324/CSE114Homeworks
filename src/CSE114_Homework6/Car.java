@@ -71,4 +71,8 @@ public class Car {
         repairTicketsSize = 0;
     }
     
+    public void decreaseNumTickets(){
+        repairTicketsSize--;
+    }
+    
 }

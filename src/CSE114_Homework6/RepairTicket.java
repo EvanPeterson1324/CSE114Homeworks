@@ -19,7 +19,6 @@ public class RepairTicket {
         this.vin = vin;
         this.cost = cost;
         this.description = description;
-
         ticketNumber = 0;
     }
 
