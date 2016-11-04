@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package CSE114_Homework7;
 
 import java.io.File;
@@ -11,7 +6,10 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
- * @author Evan Peterson SBU ID: 108509452 CSE 114 Homework #7
+ * @author Evan Peterson 
+ * SBU ID: 108509452 
+ * CSE 114 
+ * Homework #7
  */
 public class ReformatCode {
 
