@@ -11,7 +11,7 @@ class BinaryFormatException extends Exception{
     private String binFormat;
     
     public BinaryFormatException(String binFormat){
-        super(binFormat);
+        super("Invalid Binary Format: " + binFormat);
         this.binFormat = binFormat;
     }
     

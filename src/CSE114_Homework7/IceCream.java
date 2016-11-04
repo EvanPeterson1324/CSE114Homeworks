@@ -32,8 +32,9 @@ class IceCream extends Dessert{
     
     @Override
     public boolean equals(Object obj){
-        IceCream iceCream = (IceCream)obj;
-        return this.name.equals(iceCream.getCost()) 
-                && this.cost == iceCream.getCost();
+
+        return (obj instanceof IceCream) 
+                && (this.name.equals(((IceCream)obj).getName())) 
+                && (this.cost == ((IceCream)obj).getCost());
     }
 }

@@ -36,8 +36,9 @@ class CookiePack extends Dessert{
     
     @Override
     public boolean equals(Object obj){
-        CookiePack pack = (CookiePack)obj;
-        return this.name.equals(pack.getName()) && this.cost == pack.cost;
+        return (obj instanceof CookiePack) 
+                && (this.name.equals(((CookiePack)obj).getName())) 
+                && (this.cost == ((CookiePack)obj).getCost());
     }
     
 }

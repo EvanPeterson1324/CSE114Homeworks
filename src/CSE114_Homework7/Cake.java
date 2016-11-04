@@ -38,8 +38,8 @@ class Cake extends Dessert{
     
     @Override
     public boolean equals(Object obj){
-        Cake cake = (Cake) obj;
-        return (this.name.equals(cake.getName()))
-                && (this.numLayers == cake.getNumLayers());
+        return (obj instanceof Cake) 
+                && (this.name.equals(((Cake)obj).getName())) 
+                && (this.cost == ((Cake)obj).getCost());
     }
 }

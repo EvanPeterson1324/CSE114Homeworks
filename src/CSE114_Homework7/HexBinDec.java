@@ -1,9 +1,6 @@
 
 package CSE114_Homework7;
 
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author Evan Peterson
@@ -32,7 +29,7 @@ public class HexBinDec {
         } catch (BinaryFormatException ex){
             System.out.println(ex.getBinString() + " is not a valid Binary Format");
         }
-            
+        System.out.println();    
     }
     
     public static int hex2Dec(String hexString) throws HexFormatException{
@@ -52,10 +49,8 @@ public class HexBinDec {
     }
     
     public static int bin2Dec(String binString) throws BinaryFormatException {
-        
         try{
-            int converted = Integer.parseInt(binString, 2);
-            return converted;
+            return Integer.parseInt(binString, 2);
         } catch(NumberFormatException ex){
             throw new BinaryFormatException(binString);
         }

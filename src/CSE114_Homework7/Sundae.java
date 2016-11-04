@@ -33,7 +33,8 @@ class Sundae extends IceCream {
     
     @Override
     public boolean equals(Object obj){
-        Sundae sundae = (Sundae) obj;
-        return this.name.equals(sundae.getName()) && this.getCost() == sundae.getCost();
+        return (obj instanceof Sundae) 
+                && (this.name.equals(((Sundae)obj).getName())) 
+                && (this.getCost() == ((Sundae)obj).getCost());
     }
 }
